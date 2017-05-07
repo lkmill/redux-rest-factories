@@ -1,7 +1,7 @@
-import { camelCase, kebabCase } from 'lowline';
+import { kebabCase } from 'lowline';
 
-export default (name) => {
-  const baseUrl = `/api/${kebabCase(name)}`;
+export default (singular, plural = `${singular}s`) => {
+  const baseUrl = `/api/${kebabCase(plural)}`;
 
   const headers = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -9,14 +9,14 @@ export default (name) => {
     accept: 'application/json',
   };
 
-  const RECEIVE = `RECEIVE_${name.toUpperCase()}`;
-  const REMOVE = `REMOVE_${name.toUpperCase()}`;
-  const DELETE = `DELETE_${name.toUpperCase()}`;
-  const CREATE = `CREATE_${name.toUpperCase()}`;
-  const UPDATE = `UPDATE_${name.toUpperCase()}`;
-  const SAVE = `SAVE_${name.toUpperCase()}`;
-  const SAVE_FAILURE = `SAVE_${name.toUpperCase()}_FAILURE`;
-  const SAVE_SUCCESS = `SAVE_${name.toUpperCase()}_SUCCESS`;
+  const RECEIVE = `RECEIVE_${singular.toUpperCase()}`;
+  const REMOVE = `REMOVE_${singular.toUpperCase()}`;
+  const DELETE = `DELETE_${singular.toUpperCase()}`;
+  const CREATE = `CREATE_${singular.toUpperCase()}`;
+  const UPDATE = `UPDATE_${singular.toUpperCase()}`;
+  const SAVE = `SAVE_${singular.toUpperCase()}`;
+  const SAVE_FAILURE = `SAVE_${singular.toUpperCase()}_FAILURE`;
+  const SAVE_SUCCESS = `SAVE_${singular.toUpperCase()}_SUCCESS`;
 
   function del(id) {
     return (dispatch) => {
@@ -115,36 +115,36 @@ export default (name) => {
   }
 
   return {
-    [RECEIVE]: RECEIVE,
+    RECEIVE: RECEIVE,
 
-    [`receive${camelCase(name)}`]: receive,
+    receive: receive,
 
-    [REMOVE]: REMOVE,
+    REMOVE: REMOVE,
 
-    [`remove${camelCase(name)}`]: remove,
+    remove: remove,
 
-    [DELETE]: DELETE,
+    DELETE: DELETE,
 
-    [`delete${camelCase(name)}`]: del,
+    del: del,
 
-    [CREATE]: CREATE,
+    CREATE: CREATE,
 
-    [`create${camelCase(name)}`]: create,
+    create: create,
 
-    [UPDATE]: UPDATE,
+    UPDATE: UPDATE,
 
-    [`update${camelCase(name)}`]: update,
+    update: update,
 
-    [SAVE]: SAVE,
+    SAVE: SAVE,
 
-    [`save${camelCase(name)}`]: save,
+    save: save,
 
-    [SAVE_FAILURE]: SAVE_FAILURE,
+    SAVE_FAILURE: SAVE_FAILURE,
 
-    [`save${camelCase(name)}Failure`]: saveFailure,
+    saveFailure: saveFailure,
 
-    [SAVE_SUCCESS]: SAVE_SUCCESS,
+    SAVE_SUCCESS: SAVE_SUCCESS,
 
-    [`save${camelCase(name)}Success`]: saveSuccess,
+    saveSuccess: saveSuccess,
   };
 };

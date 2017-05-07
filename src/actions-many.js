@@ -1,9 +1,7 @@
-import { camelCase } from 'lowline';
+export default (singular, plural = `${singular}s`) => {
+  const RECEIVE = `RECEIVE_${plural.toUpperCase()}`;
 
-export default (name) => {
-  const RECEIVE = `RECEIVE_${name.toUpperCase()}`;
-
-  const REMOVE = `REMOVE_${name.toUpperCase()}`;
+  const REMOVE = `REMOVE_${plural.toUpperCase()}`;
 
   function receive(json) {
     return {
@@ -20,10 +18,12 @@ export default (name) => {
   }
 
   return {
-    [RECEIVE]: RECEIVE,
+    RECEIVE: RECEIVE,
 
-    [`receive${camelCase(name)}`]: receive,
+    receive: receive,
 
-    [`remove${camelCase(name)}`]: remove,
+    REMOVE: REMOVE,
+
+    remove: remove,
   };
 };

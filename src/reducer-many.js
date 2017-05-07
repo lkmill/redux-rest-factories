@@ -1,4 +1,4 @@
-export default (plural, singular = plural.slice(0, -1)) => {
+export default (singular, plural = `${singular}s`) => {
   const RECEIVE = `RECEIVE_${plural.toUpperCase()}`;
   const REMOVE = `REMOVE_${plural.toUpperCase()}`;
   const REMOVE_SINGLE = `REMOVE_${singular.toUpperCase()}`;

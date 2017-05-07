@@ -4,6 +4,7 @@
     "consistent-return": 0,
     "default-case": 0,
     "func-names": 0,
+    "import/no-unresolved": [2, { "ignore": ["^[^./]"] }],
     "no-cond-assign": 0,
     "no-console": [1, { "allow": ["warn", "error", "info"] }],
     "no-empty": [2, { "allowEmptyCatch": true }],
