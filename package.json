@@ -1,6 +1,6 @@
 {
   "name": "redux-rest-factories",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "jsnext:main": "es/index.js",
