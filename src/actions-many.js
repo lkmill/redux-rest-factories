@@ -1,29 +1,26 @@
 export default (singular, plural = `${singular}s`) => {
-  const RECEIVE = `RECEIVE_${plural.toUpperCase()}`;
+  const RECEIVE = `RECEIVE_${plural.toUpperCase()}`
 
-  const REMOVE = `REMOVE_${plural.toUpperCase()}`;
+  const REMOVE = `REMOVE_${plural.toUpperCase()}`
 
-  function receive(json) {
+  function receive (json) {
     return {
       type: RECEIVE,
       payload: json,
-      receivedAt: Date.now(),
-    };
+      receivedAt: Date.now()
+    }
   }
 
-  function remove() {
+  function remove () {
     return {
-      type: REMOVE,
-    };
+      type: REMOVE
+    }
   }
 
   return {
-    RECEIVE: RECEIVE,
-
-    receive: receive,
-
-    REMOVE: REMOVE,
-
-    remove: remove,
-  };
-};
+    RECEIVE,
+    REMOVE,
+    receive,
+    remove
+  }
+}
