@@ -1,7 +1,7 @@
 import { kebabCase } from 'lowline';
 
-export default (singular, plural = `${singular}s`) => {
-  const baseUrl = `/api/${kebabCase(plural)}`;
+export default (singular, plural = `${singular}s`, urlRoot = '/api') => {
+  const baseUrl = `${urlRoot}/${kebabCase(plural)}`;
 
   const headers = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -70,6 +70,7 @@ export default (singular, plural = `${singular}s`) => {
       id = json.id;
     }
 
+    // TODO throw error when no id
     if (!id) return;
 
     return (dispatch) => {
