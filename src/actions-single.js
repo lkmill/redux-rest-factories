@@ -1,4 +1,4 @@
-import { kebabCase } from 'lowline'
+import { kebabCase, snakeCase } from 'lowline'
 
 export default (singular, plural = `${singular}s`, urlRoot = '/api') => {
   const baseUrl = `${urlRoot}/${kebabCase(plural)}`
@@ -9,14 +9,16 @@ export default (singular, plural = `${singular}s`, urlRoot = '/api') => {
     accept: 'application/json'
   }
 
-  const RECEIVE = `RECEIVE_${singular.toUpperCase()}`
-  const REMOVE = `REMOVE_${singular.toUpperCase()}`
-  const DELETE = `DELETE_${singular.toUpperCase()}`
-  const CREATE = `CREATE_${singular.toUpperCase()}`
-  const UPDATE = `UPDATE_${singular.toUpperCase()}`
-  const SAVE = `SAVE_${singular.toUpperCase()}`
-  const SAVE_FAILURE = `SAVE_${singular.toUpperCase()}_FAILURE`
-  const SAVE_SUCCESS = `SAVE_${singular.toUpperCase()}_SUCCESS`
+  const upperCase = snakeCase(singular).toUpperCase()
+
+  const RECEIVE = `RECEIVE_${upperCase}`
+  const REMOVE = `REMOVE_${upperCase}`
+  const DELETE = `DELETE_${upperCase}`
+  const CREATE = `CREATE_${upperCase}`
+  const UPDATE = `UPDATE_${upperCase}`
+  const SAVE = `SAVE_${upperCase}`
+  const SAVE_FAILURE = `SAVE_${upperCase}_FAILURE`
+  const SAVE_SUCCESS = `SAVE_${upperCase}_SUCCESS`
 
   function del (id) {
     return (dispatch) => {

@@ -1,7 +1,11 @@
+import { snakeCase } from 'lowline'
+
 export default (singular) => {
-  const UPDATE = `UPDATE_${singular.toUpperCase()}`
-  const RECEIVE = `RECEIVE_${singular.toUpperCase()}`
-  const REMOVE = `REMOVE_${singular.toUpperCase()}`
+  const upperCase = snakeCase(singular).toUpperCase()
+
+  const UPDATE = `UPDATE_${upperCase}`
+  const RECEIVE = `RECEIVE_${upperCase}`
+  const REMOVE = `REMOVE_${upperCase}`
 
   return (state = null, action) => {
     switch (action.type) {

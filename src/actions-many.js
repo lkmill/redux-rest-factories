@@ -1,7 +1,11 @@
-export default (singular, plural = `${singular}s`) => {
-  const RECEIVE = `RECEIVE_${plural.toUpperCase()}`
+import { snakeCase } from 'lowline'
 
-  const REMOVE = `REMOVE_${plural.toUpperCase()}`
+export default (singular, plural = `${singular}s`) => {
+  const upperCase = snakeCase(plural).toUpperCase()
+
+  const RECEIVE = `RECEIVE_${upperCase}`
+
+  const REMOVE = `REMOVE_${upperCase}`
 
   function receive (json) {
     return {
